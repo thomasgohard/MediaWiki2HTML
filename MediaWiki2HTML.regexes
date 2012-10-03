@@ -1,0 +1,43 @@
+################################################################################
+#
+#	MediaWiki2HTML -- A WikiMedia to HTML converter
+#
+#-------------------------------------------------------------------------------
+#
+#	Author: @thomasgohard (https://github.com/thomasgohard/)
+#	Version: v1.0
+#
+#-------------------------------------------------------------------------------
+#
+#	Copyright (c) 2012 Thomas Gohard
+#
+#	Permission is hereby granted, free of charge, to any person obtaining a
+#	copy of this software and associated documentation files (the
+#	"Software"), to deal in the Software without restriction, including with
+#	out limitation the rights to use, copy, modify, merge, publish,
+#	distribute, sublicense, and/or sell copies of the Software, and to
+#	permit persons to whom the Software is furnished to do so, subject to
+#	the following conditions:
+#
+#	The above copyright notice and this permission notice shall be included
+#	in all copies or substantial portions of the Software.
+#
+#	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+#	OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+#	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+#	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+#	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+#	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+#	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#
+################################################################################
+s/^\s*==\s*\([^=]\+\)\s*==\s*$/<h2>\1<\/h2>/g
+s/^\s*===\s*\([^=]\+\)\s*===\s*$/<h3>\1<\/h3>/g
+s/^\s*====\s*\([^=]\+\)\s*====\s*$/<h4>\1<\/h4>/g
+s/^\s*=====\s*\([^=]\+\)\s*=====\s*$/<h5>\1<\/h5>/g
+s/^\s*======\s*\([^=]\+\)\s*======\s*$/<h6>\1<\/h6>/g
+s/'''''\(.\+\)'''''/<strong><em>\1<\/em><\/strong>/g
+s/'''\(.\+\)'''/<strong>\1<\/strong>/g
+s/''\(.\+\)''/<em>\1<\/em>/g
+s/^\s*{|\(.*\)/<table\1>/g
+s/^\s*|}/<\/table>/g
