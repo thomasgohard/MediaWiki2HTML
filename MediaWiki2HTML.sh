@@ -79,10 +79,16 @@ then
 fi
 
 #
+# Backup Internal Field Separator value and replace it with new line
+#
+IFS_backup=$IFS;
+IFS=$'\n';
+
+#
 # Load regular expressions
 #
-regexpath=./MediaWiki2HTML.regexp
-regexes=(`grep "^s/" $regexpath | tr '\n' ' '`);
+regexpath=./MediaWiki2HTML.regexes
+regexes=(`grep "^\s*[^#]" $regexpath`);
 
 #
 # Set working filenames
@@ -103,12 +109,17 @@ sed '/^$/d' $inputpath >> $wrkgpath;
 
 for regex in ${regexes[@]};
 do
-	sed $regex $wrkgpath > $wrkgpath.tmp;
+	sed $regex $wrkgpath > $wrkgpath$tmpext;
 	rm $wrkgpath;
-	mv $wrkgpath.tmp $wrkgpath;
+	mv $wrkgpath$tmpext $wrkgpath;
 done;
 echo -e "</body>\n</html>" >> $wrkgpath;
 
 mv $wrkgpath $outputpath;
+
+#
+# Restore Internal Field Separator value
+#
+IFS=$IFS_backup;
 
 exit 0;
