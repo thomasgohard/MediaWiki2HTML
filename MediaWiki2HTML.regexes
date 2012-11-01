@@ -75,3 +75,8 @@ s/^\s*!\s*\(.*\)$/<th>\1<\/th>/g
 s/^\s*|\s*\(.*\)$/<td>\1<\/td>/g
 s/<th>\(.*\)\s*!!/<th>\1<\/th><th>/g
 s/<td>\(.*\)\s*||/<td>\1<\/td><td>/g
+
+#
+# Wrap every line not contained by an HTML element in a paragraph element
+#
+s/^\s*\([^<].*[^>]\)$/<p>\1<\/p>/g
